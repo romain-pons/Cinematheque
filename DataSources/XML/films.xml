@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<movies>
+   <movie>
+      <title>Avatar</title>
+      <genre>Science Fiction</genre>
+      <main_actor>Sam Worthington</main_actor>
+      <director>James Cameron</director>
+   </movie>
+   <movie>
+      <title>Inception</title>
+      <genre>Science Fiction</genre>
+      <main_actor>Leonardo DiCaprio</main_actor>
+      <director>Christopher Nolan</director>
+   </movie>
+   <movie>
+      <title>The Dark Knight</title>
+      <genre>Action</genre>
+      <main_actor>Christian Bale</main_actor>
+      <director>Christopher Nolan</director>
+   </movie>
+   <movie>
+      <title>Pulp Fiction</title>
+      <genre>Crime</genre>
+      <main_actor>John Travolta</main_actor>
+      <director>Quentin Tarantino</director>
+   </movie>
+   <movie>
+      <title>Interstellar</title>
+      <genre>Science Fiction</genre>
+      <main_actor>Matthew McConaughey</main_actor>
+      <director>Christopher Nolan</director>
+   </movie>
+   <movie>
+      <title>The Shawshank Redemption</title>
+      <genre>Drama</genre>
+      <main_actor>Tim Robbins</main_actor>
+      <director>Frank Darabont</director>
+   </movie>
+   <movie>
+      <title>The Godfather</title>
+      <genre>Crime</genre>
+      <main_actor>Marlon Brando</main_actor>
+      <director>Francis Ford Coppola</director>
+   </movie>
+   <movie>
+      <title>Forrest Gump</title>
+      <genre>Drama</genre>
+      <main_actor>Tom Hanks</main_actor>
+      <director>Robert Zemeckis</director>
+   </movie>
+   <movie>
+      <title>The Matrix</title>
+      <genre>Science Fiction</genre>
+      <main_actor>Keanu Reeves</main_actor>
+      <director>The Wachowskis</director>
+   </movie>
+   <movie>
+      <title>Gladiator</title>
+      <genre>Action</genre>
+      <main_actor>Russell Crowe</main_actor>
+      <director>Ridley Scott</director>
+   </movie>
+   <movie>
+      <title>Titanic</title>
+      <genre>Romance</genre>
+      <main_actor>Leonardo DiCaprio</main_actor>
+      <director>James Cameron</director>
+   </movie>
+   <movie>
+      <title>Inglourious Basterds</title>
+      <genre>War</genre>
+      <main_actor>Brad Pitt</main_actor>
+      <director>Quentin Tarantino</director>
+   </movie>
+   <movie>
+      <title>The Silence of the Lambs</title>
+      <genre>Thriller</genre>
+      <main_actor>Anthony Hopkins</main_actor>
+      <director>Jonathan Demme</director>
+   </movie>
+   <movie>
+      <title>The Departed</title>
+      <genre>Crime</genre>
+      <main_actor>Leonardo DiCaprio</main_actor>
+      <director>Martin Scorsese</director>
+   </movie>
+   <movie>
+      <title>The Avengers</title>
+      <genre>Action</genre>
+      <main_actor>Robert Downey Jr.</main_actor>
+      <director>Joss Whedon</director>
+   </movie>
+   <movie>
+      <title>The Social Network</title>
+      <genre>Drama</genre>
+      <main_actor>Jesse Eisenberg</main_actor>
+      <director>David Fincher</director>
+   </movie>
+   <movie>
+      <title>Saving Private Ryan</title>
+      <genre>War</genre>
+      <main_actor>Tom Hanks</main_actor>
+      <director>Steven Spielberg</director>
+   </movie>
+   <movie>
+      <title>The Lord of the Rings: The Fellowship of the Ring</title>
+      <genre>Fantasy</genre>
+      <main_actor>Elijah Wood</main_actor>
+      <director>Peter Jackson</director>
+   </movie>
+   <movie>
+      <title>Jurassic Park</title>
+      <genre>Science Fiction</genre>
+      <main_actor>Sam Neill</main_actor>
+      <director>Steven Spielberg</director>
+   </movie>
+   <movie>
+      <title>Fight Club</title>
+      <genre>Drama</genre>
+      <main_actor>Brad Pitt</main_actor>
+      <director>David Fincher</director>
+   </movie>
+   <movie>
+      <title>Goodfellas</title>
+      <genre>Crime</genre>
+      <main_actor>Robert De Niro</main_actor>
+      <director>Martin Scorsese</director>
+   </movie>
+   <movie>
+      <title>The Wolf of Wall Street</title>
+      <genre>Biography</genre>
+      <main_actor>Leonardo DiCaprio</main_actor>
+      <director>Martin Scorsese</director>
+   </movie>
+   <movie>
+      <title>The Revenant</title>
+      <genre>Adventure</genre>
+      <main_actor>Leonardo DiCaprio</main_actor>
+      <director>Alejandro González Iñárritu</director>
+   </movie>
+   <movie>
+      <title>Mad Max: Fury Road</title>
+      <genre>Action</genre>
+      <main_actor>Tom Hardy</main_actor>
+      <director>George Miller</director>
+   </movie>
+   <movie>
+      <title>The Dark Knight Rises</title>
+      <genre>Action</genre>
+      <main_actor>Christian Bale</main_actor>
+      <director>Christopher Nolan</director>
+   </movie>
+   <movie>
+      <title>Avengers: Endgame</title>
+      <genre>Action</genre>
+      <main_actor>Robert Downey Jr.</main_actor>
+      <director>Anthony Russo, Joe Russo</director>
+   </movie>
+   <movie>
+      <title>Spider-Man: No Way Home</title>
+      <genre>Action</genre>
+      <main_actor>Tom Holland</main_actor>
+      <director>Jon Watts</director>
+   </movie>
+   <movie>
+      <title>Black Panther</title>
+      <genre>Action</genre>
+      <main_actor>Chadwick Boseman</main_actor>
+      <director>Ryan Coogler</director>
+   </movie>
+   <movie>
+      <title>Jurassic World</title>
+      <genre>Science Fiction</genre>
+      <main_actor>Chris Pratt</main_actor>
+      <director>Colin Trevorrow</director>
+   </movie>
+</movies>

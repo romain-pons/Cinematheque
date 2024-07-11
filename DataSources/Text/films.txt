@@ -1,0 +1,29 @@
+Avatar; Science Fiction; Sam Worthington; James Cameron
+Inception; Science Fiction; Leonardo DiCaprio; Christopher Nolan
+The Dark Knight; Action; Christian Bale; Christopher Nolan
+Pulp Fiction; Crime; John Travolta; Quentin Tarantino
+Interstellar; Science Fiction; Matthew McConaughey; Christopher Nolan
+The Shawshank Redemption; Drama; Tim Robbins; Frank Darabont
+The Godfather; Crime; Marlon Brando; Francis Ford Coppola
+Forrest Gump; Drama; Tom Hanks; Robert Zemeckis
+The Matrix; Science Fiction; Keanu Reeves; The Wachowskis
+Gladiator; Action; Russell Crowe; Ridley Scott
+Titanic; Romance; Leonardo DiCaprio; James Cameron
+Inglourious Basterds; War; Brad Pitt; Quentin Tarantino
+The Silence of the Lambs; Thriller; Anthony Hopkins; Jonathan Demme
+The Departed; Crime; Leonardo DiCaprio; Martin Scorsese
+The Avengers; Action; Robert Downey Jr.; Joss Whedon
+The Social Network; Drama; Jesse Eisenberg; David Fincher
+Saving Private Ryan; War; Tom Hanks; Steven Spielberg
+The Lord of the Rings: The Fellowship of the Ring; Fantasy; Elijah Wood; Peter Jackson
+Jurassic Park; Science Fiction; Sam Neill; Steven Spielberg
+Fight Club; Drama; Brad Pitt; David Fincher
+Goodfellas; Crime; Robert De Niro; Martin Scorsese
+The Wolf of Wall Street; Biography; Leonardo DiCaprio; Martin Scorsese
+The Revenant; Adventure; Leonardo DiCaprio; Alejandro González Iñárritu
+Mad Max: Fury Road; Action; Tom Hardy; George Miller
+The Dark Knight Rises; Action; Christian Bale; Christopher Nolan
+Avengers: Endgame; Action; Robert Downey Jr.; Anthony Russo, Joe Russo
+Spider-Man: No Way Home; Action; Tom Holland; Jon Watts
+Black Panther; Action; Chadwick Boseman; Ryan Coogler
+Jurassic World; Science Fiction; Chris Pratt; Colin Trevorrow
