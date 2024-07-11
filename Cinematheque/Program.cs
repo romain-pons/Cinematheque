@@ -1,12 +1,8 @@
 ﻿using System.Xml.Linq;
+using Cinematheque;
+using System;
+using System.IO;
 
-public class Movie
-{
-    public string Title { get; set; }
-    public string Genre { get; set; }
-    public string MainActor { get; set; }
-    public string Director { get; set; }
-}
 
 public class Program
 {
@@ -15,17 +11,17 @@ public class Program
 
     static void Main()
     {
-        LoadMoviesFromXml("C:\\Users\\romai\\source\\repos\\Cinematheque\\DataSources\\XML\\films.xml");
-        LoadMoviesFromText("C:\\Users\\romai\\source\\repos\\Cinematheque\\DataSources\\Text\\films.txt");
+        string currentDirectory = Directory.GetCurrentDirectory();
+        string solutionDirectory = Directory.GetParent(currentDirectory).Parent.Parent.Parent.FullName;
+        string xmlFilePath = Path.Combine(solutionDirectory, "DataSources", "XML", "films.xml");
+        string textFilePath = Path.Combine(solutionDirectory, "DataSources", "Text", "films.txt");
+        LoadMoviesFromXml(xmlFilePath);
+        LoadMoviesFromText(textFilePath);
 
         while (true)
         {
-            Console.WriteLine("\nQue voulez-vous faire ?\n");
-            Console.WriteLine("1. Transformer une source de données en une autre");
-            Console.WriteLine("2. Recherche sur plusieurs sources de données");
-            Console.WriteLine("3. Trier les résultats");
-            Console.WriteLine("4. Condition de recherche (filtrage)");
-            Console.WriteLine("0. Quitter");
+
+            DisplayMainMenu();
 
             int choix;
             if (!int.TryParse(Console.ReadLine(), out choix))
@@ -43,19 +39,37 @@ public class Program
                     SearchData();
                     break;
                 case 3:
-                    FilterData();
-                    break;
-                case 4:
                     SortData();
                     break;
+                case 4:
+                    FilterData();
+                    break;
                 case 0:
-                    Console.WriteLine("Au revoir !");
+                    Console.Clear();
+                    Console.WriteLine("╔════════════════════════════════════════════════════════════════╗");
+                    Console.WriteLine("║                           AU REVOIR !                          ║");
+                    Console.WriteLine("╚════════════════════════════════════════════════════════════════╝\n");
                     return;
                 default:
                     Console.WriteLine("Choix invalide. Veuillez choisir une option valide.");
                     break;
             }
         }
+    }
+
+    static void DisplayMainMenu()
+    {
+        Console.Clear();
+        Console.WriteLine("╔════════════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                        MENU PRINCIPAL                          ║");
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════╣");
+        Console.WriteLine("║  1. Transformer une source de données en une autre             ║");
+        Console.WriteLine("║  2. Recherche sur plusieurs sources de données                 ║");
+        Console.WriteLine("║  3. Trier les résultats                                        ║");
+        Console.WriteLine("║  4. Condition de recherche (filtrage)                          ║");
+        Console.WriteLine("║  0. Quitter                                                    ║");
+        Console.WriteLine("╚════════════════════════════════════════════════════════════════╝\n");
+        Console.Write("Votre choix : ");
     }
 
     static void LoadMoviesFromXml(string filename)
@@ -90,50 +104,84 @@ public class Program
 
     static void TransformData()
     {
+        Console.Clear();   
+        Console.WriteLine("╔════════════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                       TRANSFORMATION                           ║");
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════╣");
+        Console.WriteLine("║ Transformation du fichier films.xml en texte                   ║");
+        Console.WriteLine("╚════════════════════════════════════════════════════════════════╝\n");
 
-        Console.WriteLine("\nTransformation du fichier films.xml en texte\n");
         // Transformation (de XML à texte)
         var transformedData = moviesFromXml.Select(m => $"{m.Title}; {m.Genre}; {m.MainActor}; {m.Director}");
         foreach (var item in transformedData)
         {
             Console.WriteLine(item);
         }
+
+        Console.WriteLine("\nAppuyez sur une touche pour revenir au menu principal...");
+        Console.ReadKey();
     }
 
     static void SearchData()
     {
         // Recherche sur plusieurs sources de données (par titre)
-        Console.WriteLine("\nQuel est le titre que vous recherchez ?");
+        Console.Clear();
+        Console.WriteLine("╔════════════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                         RECHERCHE                              ║");
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════╣");
+        Console.WriteLine("║ Quel est le titre que vous recherchez ?                        ║");
+        Console.WriteLine("╚════════════════════════════════════════════════════════════════╝\n");
+        Console.Write("Votre choix : ");
         string searchTerm = Console.ReadLine();
         var searchResultsXml = moviesFromXml.Where(m => m.Title.Contains(searchTerm, StringComparison.InvariantCultureIgnoreCase));
         var searchResultsTxt = moviesFromText.Where(m => m.Title.Contains(searchTerm, StringComparison.InvariantCultureIgnoreCase));
 
-        Console.WriteLine("\nResultat du XML : \n");
+        Console.WriteLine("\n╔════════════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                     Resultat du XML :                          ║");
+        Console.WriteLine("╚════════════════════════════════════════════════════════════════╝\n");
         foreach (var movie in searchResultsXml)
         {
             Console.WriteLine($"{movie.Title} - {movie.Genre} - {movie.MainActor} - {movie.Director}");
         }
 
-        Console.WriteLine("\nResultat du Texte : \n");
+
+        Console.WriteLine("\n╔════════════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                    Resultat du Texte :                         ║");
+        Console.WriteLine("╚════════════════════════════════════════════════════════════════╝\n");
         foreach (var movie in searchResultsTxt)
         {
             Console.WriteLine($"{movie.Title} - {movie.Genre} - {movie.MainActor} - {movie.Director}");
         }
+
+        Console.WriteLine("\nAppuyez sur une touche pour revenir au menu principal...");
+        Console.ReadKey();
     }
 
     static void SortData()
     {
-        Console.WriteLine("\nChoisissez un sens : \n");
-        Console.WriteLine("1 - Croissant ");
-        Console.WriteLine("2 - Décroissant");
+        Console.Clear();
+        Console.WriteLine("╔════════════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                      TRI DES DONNÉES                           ║");
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════╣");
+        Console.WriteLine("║ Choisissez un sens :                                           ║");
+        Console.WriteLine("║ 1. Croissant                                                   ║");
+        Console.WriteLine("║ 2. Décroissant                                                 ║");
+        Console.WriteLine("╚════════════════════════════════════════════════════════════════╝\n");
+        Console.Write("Votre choix : ");
 
         int sens = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("\nChoisissez un critère : \n");
-        Console.WriteLine("1 - Titre");
-        Console.WriteLine("2 - Genre");
-        Console.WriteLine("3 - Acteur principal");
-        Console.WriteLine("4 - Réalisateur");
+        Console.Clear();
+        Console.WriteLine("╔════════════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                      TRI DES DONNÉES                           ║");
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════╣");
+        Console.WriteLine("║ Choisissez un critère :                                        ║");
+        Console.WriteLine("║ 1. Titre                                                       ║");
+        Console.WriteLine("║ 2. Genre                                                       ║");
+        Console.WriteLine("║ 3. Acteur principal                                            ║");
+        Console.WriteLine("║ 4. Réalisateur                                                 ║");
+        Console.WriteLine("╚════════════════════════════════════════════════════════════════╝\n");
+        Console.Write("Votre choix : ");
 
         int choice = int.Parse(Console.ReadLine());
 
@@ -190,19 +238,30 @@ public class Program
                 return;
         }
 
+        Console.WriteLine("");
         foreach (var movie in filteredData)
         {
             Console.WriteLine($"{movie.Title} - {movie.Genre} - {movie.MainActor} - {movie.Director}");
         }
+
+        Console.WriteLine("\nAppuyez sur une touche pour revenir au menu principal...");
+        Console.ReadKey();
     }
 
     static void FilterData()
     {
-        Console.WriteLine("\nChoisissez un critère de recherche : \n");
-        Console.WriteLine("1 - Titre");
-        Console.WriteLine("2 - Genre");
-        Console.WriteLine("3 - Acteur principal");
-        Console.WriteLine("4 - Réalisateur");
+
+        Console.Clear();
+        Console.WriteLine("╔════════════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                    FILTRAGE DES DONNÉES                        ║");
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════╣");
+        Console.WriteLine("║ Choisissez un critère de recherche:                            ║");
+        Console.WriteLine("║ 1. Titre                                                       ║");
+        Console.WriteLine("║ 2. Genre                                                       ║");
+        Console.WriteLine("║ 3. Acteur principal                                            ║");
+        Console.WriteLine("║ 4. Réalisateur                                                 ║");
+        Console.WriteLine("╚════════════════════════════════════════════════════════════════╝\n");
+        Console.Write("Votre choix : ");
 
         int choice = int.Parse(Console.ReadLine());
 
@@ -234,5 +293,8 @@ public class Program
         {
             Console.WriteLine($"{movie.Title} - {movie.Genre} - {movie.MainActor} - {movie.Director}");
         }
+
+        Console.WriteLine("\nAppuyez sur une touche pour revenir au menu principal...");
+        Console.ReadKey();
     }
 }
