@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 
 public class Movie
 {
@@ -19,12 +15,12 @@ public class Program
 
     static void Main()
     {
-        LoadMoviesFromXml("C:\\Users\\romai\\source\\repos\\DataSources\\XML\\films.xml");
-        LoadMoviesFromText("C:\\Users\\romai\\source\\repos\\DataSources\\Text\\films.txt");
+        LoadMoviesFromXml("C:\\Users\\romai\\source\\repos\\Cinematheque\\DataSources\\XML\\films.xml");
+        LoadMoviesFromText("C:\\Users\\romai\\source\\repos\\Cinematheque\\DataSources\\Text\\films.txt");
 
         while (true)
         {
-            Console.WriteLine("Que voulez-vous faire ?");
+            Console.WriteLine("\nQue voulez-vous faire ?\n");
             Console.WriteLine("1. Transformer une source de données en une autre");
             Console.WriteLine("2. Recherche sur plusieurs sources de données");
             Console.WriteLine("3. Trier les résultats");
@@ -94,7 +90,9 @@ public class Program
 
     static void TransformData()
     {
-        // Exemple de transformation (de XML à texte)
+
+        Console.WriteLine("\nTransformation du fichier films.xml en texte\n");
+        // Transformation (de XML à texte)
         var transformedData = moviesFromXml.Select(m => $"{m.Title}; {m.Genre}; {m.MainActor}; {m.Director}");
         foreach (var item in transformedData)
         {
@@ -104,12 +102,20 @@ public class Program
 
     static void SearchData()
     {
-        // Exemple de recherche sur plusieurs sources de données (par titre)
-        Console.WriteLine("Quelle est votre recherche ?");
+        // Recherche sur plusieurs sources de données (par titre)
+        Console.WriteLine("\nQuel est le titre que vous recherchez ?");
         string searchTerm = Console.ReadLine();
-        var searchResults = moviesFromXml.Concat(moviesFromText)
-                                        .Where(m => m.Title.Contains(searchTerm));
-        foreach (var movie in searchResults)
+        var searchResultsXml = moviesFromXml.Where(m => m.Title.Contains(searchTerm, StringComparison.InvariantCultureIgnoreCase));
+        var searchResultsTxt = moviesFromText.Where(m => m.Title.Contains(searchTerm, StringComparison.InvariantCultureIgnoreCase));
+
+        Console.WriteLine("\nResultat du XML : \n");
+        foreach (var movie in searchResultsXml)
+        {
+            Console.WriteLine($"{movie.Title} - {movie.Genre} - {movie.MainActor} - {movie.Director}");
+        }
+
+        Console.WriteLine("\nResultat du Texte : \n");
+        foreach (var movie in searchResultsTxt)
         {
             Console.WriteLine($"{movie.Title} - {movie.Genre} - {movie.MainActor} - {movie.Director}");
         }
@@ -117,13 +123,13 @@ public class Program
 
     static void SortData()
     {
-        Console.WriteLine("Choisissez un sens : ");
+        Console.WriteLine("\nChoisissez un sens : \n");
         Console.WriteLine("1 - Croissant ");
         Console.WriteLine("2 - Décroissant");
 
         int sens = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("Choisissez un critère : ");
+        Console.WriteLine("\nChoisissez un critère : \n");
         Console.WriteLine("1 - Titre");
         Console.WriteLine("2 - Genre");
         Console.WriteLine("3 - Acteur principal");
@@ -192,7 +198,7 @@ public class Program
 
     static void FilterData()
     {
-        Console.WriteLine("Choisissez un critère de recherche : ");
+        Console.WriteLine("\nChoisissez un critère de recherche : \n");
         Console.WriteLine("1 - Titre");
         Console.WriteLine("2 - Genre");
         Console.WriteLine("3 - Acteur principal");
@@ -200,7 +206,7 @@ public class Program
 
         int choice = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("Entrez la valeur de recherche : ");
+        Console.WriteLine("\nEntrez la valeur de recherche : ");
         string searchValue = Console.ReadLine();
 
         IEnumerable<Movie> filteredData = Enumerable.Empty<Movie>();
@@ -208,20 +214,16 @@ public class Program
         switch (choice)
         {
             case 1:
-                filteredData = moviesFromXml.Concat(moviesFromText)
-                                            .Where(m => m.Title.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase));
+                filteredData = moviesFromXml.Where(m => m.Title.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase));
                 break;
             case 2:
-                filteredData = moviesFromXml.Concat(moviesFromText)
-                                            .Where(m => m.Genre.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase));
+                filteredData = moviesFromXml.Where(m => m.Genre.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase));
                 break;
             case 3:
-                filteredData = moviesFromXml.Concat(moviesFromText)
-                                            .Where(m => m.MainActor.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase));
+                filteredData = moviesFromXml.Where(m => m.MainActor.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase));
                 break;
             case 4:
-                filteredData = moviesFromXml.Concat(moviesFromText)
-                                            .Where(m => m.Director.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase));
+                filteredData = moviesFromXml.Where(m => m.Director.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase));
                 break;
             default:
                 Console.WriteLine("Choix invalide.");
