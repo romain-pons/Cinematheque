@@ -72,6 +72,12 @@ public class Program
         Console.Write("Votre choix : ");
     }
 
+    static void DisplayReturnToMenu()
+    {
+        Console.WriteLine("\nAppuyez sur une touche pour revenir au menu principal...");
+        Console.ReadKey();
+    }
+
     static void LoadMoviesFromXml(string filename)
     {
         XDocument doc = XDocument.Load(filename);
@@ -118,8 +124,7 @@ public class Program
             Console.WriteLine(item);
         }
 
-        Console.WriteLine("\nAppuyez sur une touche pour revenir au menu principal...");
-        Console.ReadKey();
+        DisplayReturnToMenu();
     }
 
     static void SearchData()
@@ -153,8 +158,8 @@ public class Program
             Console.WriteLine($"{movie.Title} - {movie.Genre} - {movie.MainActor} - {movie.Director}");
         }
 
-        Console.WriteLine("\nAppuyez sur une touche pour revenir au menu principal...");
-        Console.ReadKey();
+        DisplayReturnToMenu();
+
     }
 
     static void SortData()
@@ -190,13 +195,23 @@ public class Program
         switch (choice)
         {
             case 1:
-                switch(sens)
+                switch (sens)
                 {
                     case 1:
                         filteredData = moviesFromXml.OrderBy(m => m.Title);
+                        Console.WriteLine("Affichage : Titre - Genre - Acteur principal - Réalisateur \n");
+                        foreach (var movie in filteredData)
+                        {
+                            Console.WriteLine($"{movie.Title} - {movie.Genre} - {movie.MainActor} - {movie.Director}");
+                        }
                         break;
                     case 2:
                         filteredData = moviesFromXml.OrderByDescending(m => m.Title);
+                        Console.WriteLine("Affichage : Titre - Genre - Acteur principal - Réalisateur \n");
+                        foreach (var movie in filteredData)
+                        {
+                            Console.WriteLine($"{movie.Title} - {movie.Genre} - {movie.MainActor} - {movie.Director}");
+                        }
                         break;
                 }
                 break;
@@ -205,9 +220,19 @@ public class Program
                 {
                     case 1:
                         filteredData = moviesFromXml.OrderBy(m => m.Genre);
+                        Console.WriteLine("Affichage : Genre - Titre - Acteur principal - Réalisateur \n");
+                        foreach (var movie in filteredData)
+                        {
+                            Console.WriteLine($"{movie.Genre} - {movie.Title} - {movie.MainActor} - {movie.Director}");
+                        }
                         break;
                     case 2:
                         filteredData = moviesFromXml.OrderByDescending(m => m.Genre);
+                        Console.WriteLine("Affichage : Genre - Titre - Acteur principal - Réalisateur \n");
+                        foreach (var movie in filteredData)
+                        {
+                            Console.WriteLine($"{movie.Genre} - {movie.Title} - {movie.MainActor} - {movie.Director}");
+                        }
                         break;
                 }
                 break;
@@ -216,9 +241,19 @@ public class Program
                 {
                     case 1:
                         filteredData = moviesFromXml.OrderBy(m => m.MainActor);
+                        Console.WriteLine("Affichage : Acteur principal - Titre - Genre - Réalisateur \n");
+                        foreach (var movie in filteredData)
+                        {
+                            Console.WriteLine($"{movie.MainActor} - {movie.Title} - {movie.Genre} - {movie.Director}");
+                        }
                         break;
                     case 2:
                         filteredData = moviesFromXml.OrderByDescending(m => m.MainActor);
+                        Console.WriteLine("Affichage : Acteur principal - Titre - Genre - Réalisateur \n");
+                        foreach (var movie in filteredData)
+                        {
+                            Console.WriteLine($"{movie.MainActor} - {movie.Title} - {movie.Genre} - {movie.Director}");
+                        }
                         break;
                 }
                 break;
@@ -227,9 +262,19 @@ public class Program
                 {
                     case 1:
                         filteredData = moviesFromXml.OrderBy(m => m.Director);
+                        Console.WriteLine("Affichage : Réalisateur - Titre - Genre - Acteur principal \n");
+                        foreach (var movie in filteredData)
+                        {
+                            Console.WriteLine($"{movie.Director} - {movie.Title} - {movie.Genre} - {movie.MainActor}");
+                        }
                         break;
                     case 2:
                         filteredData = moviesFromXml.OrderByDescending(m => m.Director);
+                        Console.WriteLine("Affichage : Réalisateur - Titre - Genre - Acteur principal \n");
+                        foreach (var movie in filteredData)
+                        {
+                            Console.WriteLine($"{movie.Director} - {movie.Title} - {movie.Genre} - {movie.MainActor}");
+                        }
                         break;
                 }
                 break;
@@ -238,14 +283,8 @@ public class Program
                 return;
         }
 
-        Console.WriteLine("");
-        foreach (var movie in filteredData)
-        {
-            Console.WriteLine($"{movie.Title} - {movie.Genre} - {movie.MainActor} - {movie.Director}");
-        }
+        DisplayReturnToMenu();
 
-        Console.WriteLine("\nAppuyez sur une touche pour revenir au menu principal...");
-        Console.ReadKey();
     }
 
     static void FilterData()
@@ -274,27 +313,42 @@ public class Program
         {
             case 1:
                 filteredData = moviesFromXml.Where(m => m.Title.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase));
+                Console.WriteLine("Affichage : Titre - Genre - Acteur principal - Réalisateur \n");
+                foreach (var movie in filteredData)
+                {
+                    Console.WriteLine($"{movie.Title} - {movie.Genre} - {movie.MainActor} - {movie.Director}");
+                }
                 break;
             case 2:
                 filteredData = moviesFromXml.Where(m => m.Genre.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase));
+                Console.WriteLine("Affichage : Genre - Titre - Acteur principal - Réalisateur \n");
+                foreach (var movie in filteredData)
+                {
+                    Console.WriteLine($"{movie.Genre} - {movie.Title} - {movie.MainActor} - {movie.Director}");
+                }
                 break;
             case 3:
                 filteredData = moviesFromXml.Where(m => m.MainActor.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase));
+                Console.WriteLine("Affichage : Acteur principal - Titre - Genre - Réalisateur \n");
+                foreach (var movie in filteredData)
+                {
+                    Console.WriteLine($"{movie.MainActor} - {movie.Title} - {movie.Genre} - {movie.Director}");
+                }
                 break;
             case 4:
                 filteredData = moviesFromXml.Where(m => m.Director.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase));
+                Console.WriteLine("Affichage : Réalisateur - Titre - Genre - Acteur principal \n");
+                foreach (var movie in filteredData)
+                {
+                    Console.WriteLine($"{movie.Director} - {movie.Title} - {movie.Genre} - {movie.MainActor}");
+                }
                 break;
             default:
                 Console.WriteLine("Choix invalide.");
                 return;
         }
 
-        foreach (var movie in filteredData)
-        {
-            Console.WriteLine($"{movie.Title} - {movie.Genre} - {movie.MainActor} - {movie.Director}");
-        }
+        DisplayReturnToMenu();
 
-        Console.WriteLine("\nAppuyez sur une touche pour revenir au menu principal...");
-        Console.ReadKey();
     }
 }
